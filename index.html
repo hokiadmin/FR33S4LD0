@@ -1,233 +1,466 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BONSAI GAMING</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Informasi Tebasslot</title>
+
   <style>
     :root{
-      --bg1:#065544;
-      --bg2:#10025f;
-      --card:rgba(240, 233, 233, 0.295);
-      --border:rgba(104, 206, 21, 0.16);
-      --text:#ffffff;
-      --muted:rgba(255,255,255,.86);
-      --btn1:#4ff3ff;
-      --btn2:rgb(255, 255, 255);
+      --bg:#0b0c10;
+      --panel:rgba(255,255,255,.04);
+      --stroke:rgba(255,255,255,.10);
+      --text:#fff;
+      --muted:rgba(255,255,255,.72);
+
+      --gold1:#ffd84a;
+      --gold2:#b88700;
+
+      --silver1:#f7f7f7;
+      --silver2:#9aa3ad;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
       background:
-        radial-gradient(900px 600px at 15% 10%, rgba(255,255,255,.12), transparent 60%),
-        linear-gradient(135deg,var(--bg1),var(--bg2));
-      text-align:center;
+        radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px) 0 0/10px 10px,
+        linear-gradient(180deg,#07070a,var(--bg));
+      min-height:100vh;
     }
-    .card{
+    a{color:inherit;text-decoration:none}
+
+    /* ===== Top news header ===== */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(6, 73, 11, 0.9), rgba(11,12,16,.65));
+      border-bottom:1px solid rgba(8, 82, 100, 0.562);
+    }
+    .topbar .wrap{
+      width:min(1200px,92vw);
+      margin:0 auto;
+      padding:12px 0;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:14px;
+      border:1px solid rgba(255,216,74,.22);
+      background: linear-gradient(180deg, rgba(255,216,74,.12), rgba(184,135,0,.05));
+      cursor:pointer;
+      user-select:none;
+    }
+    .brand img{height:28px;width:auto;display:block}
+    .brand b{letter-spacing:1px;text-transform:uppercase;color:var(--gold1)}
+    .right{
+      display:flex;gap:10px;align-items:center;
+    }
+    .search{
+      display:flex;align-items:center;gap:10px;
+      padding:10px 12px;border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      min-width:min(360px, 52vw);
+    }
+    .search input{
       width:100%;
-      max-width:420px;
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:22px 18px 18px;
-      backdrop-filter: blur(12px);
-      box-shadow:0 14px 40px rgba(0,0,0,.28);
-    }
-    .logo{
-      width:min(280px, 72vw);
-      border-radius:14px;
-      display:block;
-      margin:2px auto 14px;
-    }
-    h1{
-      margin:0 0 8px;
-      font-size:18px;
-      font-weight:800;
-      letter-spacing:.2px;
-    }
-    p{
-      margin:0 auto 16px;
-      font-size:14px;
-      line-height:1.45;
-      color:var(--muted);
-      max-width:34ch;
+      border:0; outline:0;
+      background:transparent;color:var(--text);
+      font-weight:600;
     }
     .btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      width:100%;
-      padding:14px 14px;
-      border-radius:14px;
-      text-decoration:none;
-      font-weight:800;
-      letter-spacing:.2px;
-      transition: transform .12s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .btn:active{ transform: translateY(1px) scale(.99); }
-    .btn-primary{
-      background:var(--btn1);
-      color:#1b1b1b;
-      box-shadow:0 12px 24px rgba(0,0,0,.22);
-      margin-bottom:10px;
-    }
-    .btn-secondary{
-      background:var(--btn2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
       color:var(--text);
-      border:1px solid var(--border);
+      padding:10px 12px;border-radius:12px;
+      font-weight:900; letter-spacing:.5px;
+      cursor:pointer;
     }
-    .small{
-      margin-top:14px;
+    .btn.gold{
+      border-color: rgba(255,216,74,.35);
+      background: linear-gradient(180deg, var(--gold1), var(--gold2));
+      color:#111;
+    }
+
+    /* ===== Category navbar ===== */
+    .nav{
+      border-top:1px solid rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.02);
+    }
+    .nav .wrap{
+      width:min(1200px,92vw);
+      margin:0 auto;
+      display:flex; gap:10px; overflow:auto;
+      padding:10px 0;
+      scrollbar-width:none;
+    }
+    .nav .wrap::-webkit-scrollbar{display:none}
+    .chip{
+      flex:0 0 auto;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-weight:900;
+      text-transform:uppercase;
       font-size:12px;
-      color:rgba(255,255,255,.78);
+      letter-spacing:.7px;
+      cursor:pointer;
+      user-select:none;
     }
-    .btn-wrap{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  margin-top:18px;
-}
+    .chip.active{
+      color:#111;
+      border-color: rgba(255,216,74,.45);
+      background: linear-gradient(180deg, var(--gold1), var(--gold2));
+    }
 
-.btn{
-  position:relative;
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:56px;
-  border-radius:14px;
-  font-weight:900;
-  letter-spacing:.5px;
-  text-decoration:none;
-  user-select:none;
+    /* ===== Layout grid ===== */
+    .container{
+      width:min(1200px,92vw);
+      margin:16px auto 88px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.65fr 1fr;
+      gap:16px;
+      align-items:start;
+    }
 
-  /* biar keliatan “kolom” tombol */
-  box-shadow: 0 10px 22px rgba(0,0,0,.22);
-  border: 1px solid rgba(255,255,255,.25);
-}
+    /* ===== Shimmer cards (silver & gold) ===== */
+    .card{
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow: 0 22px 70px rgba(0,0,0,.55);
+      overflow:hidden;
+      position:relative;
+    }
 
-/* Warna tombol */
-.btn-primary{ background:rgba(255,255,255,.18); color:#ffe600; }
-.btn-secondary{ background:rgba(255,255,255,.18); color:#ffe600; }
-.btn-tertiary{ background:rgba(255,255,255,.18); color:#ffe600; }
+    /* shimmer sweep */
+    .card.shimmer::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.18) 46%, transparent 70%);
+      transform: translateX(-65%);
+      animation: sweep 3.6s ease-in-out infinite;
+      pointer-events:none;
+      mix-blend-mode: screen;
+      opacity:.75;
+    }
+    @keyframes sweep{
+      0%{transform:translateX(-65%)}
+      55%{transform:translateX(65%)}
+      100%{transform:translateX(65%)}
+    }
 
-/* ================== EFEK BERKILAU (SHINE) ================== */
-.btn::before{
-  content:"";
-  position:absolute;
-  top:-40%;
-  left:-60%;
-  width:45%;
-  height:180%;
-  transform:rotate(20deg);
+    /* blinking border glow */
+    .card.glow-gold{
+      border-color: rgba(255,216,74,.28);
+      box-shadow: 0 22px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(255,216,74,.10);
+    }
+    .card.glow-gold::before{
+      content:"";
+      position:absolute; inset:-1px;
+      border-radius:18px;
+      box-shadow: 0 0 20px rgba(255,216,74,.20);
+      animation: blinkGold 1.9s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes blinkGold{
+      0%,100%{opacity:.25}
+      50%{opacity:.85}
+    }
 
-  background: linear-gradient(
-    to right,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,.55) 45%,
-    rgba(255,255,255,0) 100%
-  );
+    .card.glow-silver{
+      border-color: rgba(247,247,247,.22);
+      box-shadow: 0 22px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(247,247,247,.08);
+    }
+    .card.glow-silver::before{
+      content:"";
+      position:absolute; inset:-1px;
+      border-radius:18px;
+      box-shadow: 0 0 18px rgba(247,247,247,.18);
+      animation: blinkSilver 2.2s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes blinkSilver{
+      0%,100%{opacity:.20}
+      50%{opacity:.80}
+    }
 
-  opacity:.7;
-  filter: blur(0.5px);
-  animation: shine 2.4s ease-in-out infinite;
-}
+    /* ===== Article blocks ===== */
+    .pad{padding:16px; position:relative}
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .thumb{
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background:#000;
+      min-height: 220px;
+    }
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .meta{color:var(--muted); font-size:12px; letter-spacing:.6px; text-transform:uppercase}
+    h1{margin:8px 0 8px; font-size:clamp(18px,2.4vw,26px); line-height:1.15}
+    .desc{margin:0;color:var(--muted); line-height:1.6; font-size:13px}
+    .row-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .pillbtn{
+      padding:10px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:12px;
+      letter-spacing:.7px;
+      cursor:pointer;
+    }
+    .pillbtn.gold{
+      border-color: rgba(255,216,74,.35);
+      background: linear-gradient(180deg, var(--gold1), var(--gold2));
+      color:#111;
+    }
 
-/* beda kecepatan tiap tombol biar natural */
-.btn-secondary::before{ animation-duration: 2.9s; opacity:.55; }
-.btn-tertiary::before{ animation-duration: 3.3s; opacity:.45; }
-
-@keyframes shine{
-  0%{ left:-70%; }
-  60%{ left:120%; }
-  100%{ left:120%; }
-}
-
-/* Hover (desktop) */
-.btn:hover{
-  transform: translateY(-1px);
-  transition: .18s ease;
-}
-.btn{
-  box-shadow:
-    0 10px 22px rgba(0,0,0,.22),
-    0 0 18px rgba(95,246,255,.18);
-}
-/* JARAK ANTAR TOMBOL */
-.btn-wrap{
-  display:flex;
-  flex-direction:column;
-  gap:22px;          /* ⬅️ ini yang bikin renggang */
-  margin-top:22px;
-}
-
-/* kalau tombol bukan di btn-wrap, pakai ini */
-.btn{
-  margin-bottom:8px;
-}
-
-/* khusus tombol terakhir biar tidak kebanyakan space */
-.btn:last-child{
-  margin-bottom:0;
-}
-/* ====== License bottom ====== */
-    .license{
-      position:fixed;
-      left:12px;
-      right:12px;
-      bottom:12px;
-      display:flex;
-      flex-direction:column;
+    /* list articles */
+    .list{display:grid; gap:12px; margin-top:16px}
+    .item{
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap:12px;
       align-items:center;
-      gap:8px;
-      font-size:12px;
-      opacity:.95;
-      text-shadow:0 2px 6px rgba(0,0,0,.6);
-      pointer-events:none; /* biar gak ganggu klik */
     }
-    .license .logos{
-      display:flex; gap:8px; flex-wrap:wrap;
-      justify-content:center;
-      pointer-events:auto;
+    .item .pic{
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background:#000;
+      aspect-ratio: 16/10;
     }
-    .license img{height:22px; width:auto; opacity:.92}
+    .item .pic img{width:100%;height:100%;object-fit:cover;display:block}
+    .item h3{margin:4px 0 6px; font-size:14px; line-height:1.25}
+    .item p{margin:0; color:var(--muted); font-size:12px; line-height:1.5}
+
+    /* sidebar */
+    .sideTitle{
+      margin:0 0 10px;
+      font-size:14px;
+      letter-spacing:.8px;
+      text-transform:uppercase;
+      color:var(--gold1);
+      font-weight:1000;
+    }
+    .trend{display:grid; gap:10px}
+    .trend a{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .num{
+      width:28px;height:28px;border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      font-weight:1000;
+      color:#111;
+      background: linear-gradient(180deg, var(--silver1), var(--silver2));
+      flex:0 0 auto;
+    }
+    .trend .t{font-weight:900; font-size:13px; line-height:1.25}
+    .trend .s{color:var(--muted); font-size:12px; margin-top:4px}
+
+    /* floating live chat */
+    .float{
+      position:fixed; right:16px; bottom:16px; z-index:60;
+    }
+    .fab{
+      display:flex; align-items:center; gap:10px;
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,216,74,.45);
+      background: linear-gradient(180deg, var(--gold1), var(--gold2));
+      color:#111;
+      font-weight:1000;
+      text-transform:uppercase;
+      letter-spacing:.8px;
+      cursor:pointer;
+      box-shadow: 0 18px 55px rgba(0,0,0,.55);
+      user-select:none;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:#13ff6a;
+      box-shadow: 0 0 0 6px rgba(19,255,106,.14);
+      animation:pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+      .hero{grid-template-columns:1fr}
+      .thumb{min-height:200px}
+      .search{display:none}
+    }
+    @media (max-width: 520px){
+      .item{grid-template-columns: 120px 1fr}
+    }
   </style>
 </head>
+
 <body>
-  <main class="card">
-    <!-- GANTI LOGO DI SINI (boleh pakai logo PNG kamu) -->
-    <img class="logo" src="https://i.imgur.com/XEwkrud.png" alt="BAYAN Logo" />
 
-    <h1></h1>
-    <p></p>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand" onclick="window.open('https://tebaskita.com/','_blank','noopener')">
+        <!-- opsional logo -->
+        <img src="https://i.imgur.com/xLkXqF7.png" alt="Logo" onerror="this.style.display='none'">
+        <div class="name">NEWS</div>
+      </div>
 
-    <!-- GANTI LINK CS (Messenger / WA / Livechat) -->
-    <a class="btn btn-secondary" href="https://static.zdassets.com/web_widget/latest/liveChat.html?v=10#key=bonsaitoto.zendesk.com" rel="noopener">
-      KLAIM SALDO GRATIS!
-    </a>
-
-    <!-- GANTI LINK CS (Messenger / WA / Livechat) -->
-     <a class="btn btn-tertiary" href="https://www.bonsai4dnih.com/register" target="_blank">DAFTAR AKUN</a>
-
-    <div class="small">Jika tombol tidak terbuka, coba refresh lalu klik lagi.</div>
-  </main>
-  <!-- License -->
-  <div class="license">
-    <div class="logos">
-      <img src="https://idl-cdn.rika.online/toko4d/front/18.webp" alt="logo">
-      <img src="https://idl-cdn.rika.online/idl88/front/ayam.png" alt="logo">
-      <img src="https://idl-cdn.rika.online/idl88/front/as-min.png" alt="logo">
+      <div class="right">
+        <div class="search">
+          <span style="opacity:.7;font-weight:900">🔎</span>
+          <input placeholder="Cari berita..." />
+        </div>
+        <button class="btn" onclick="location.href='https://tebaskita.com/'">Kembali</button>
+        <button class="btn gold" onclick="window.open('https://come.ac/LC_tebas','_blank','noopener')">Live Chat</button>
+      </div>
     </div>
-    <div>© BONSAI4D - PLATFORM Game Online Terpercaya dan Terbaik.</div>
+  </header>
+
+  <nav class="nav">
+    <div class="wrap">
+      <div class="chip active">Terbaru</div>
+      <div class="chip">Populer</div>
+      <div class="chip">RTP</div>
+      <div class="chip">Promosi</div>
+      <div class="chip">Lainnya</div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="grid">
+
+      <!-- KIRI: Kartu utama (emas) -->
+      <article class="card shimmer glow-gold">
+        <div class="pad">
+          <div class="hero">
+            <div class="thumb">
+              <!-- ganti gambar utama -->
+              <img src="https://i.imgur.com/XjKYNEV.png" alt="Headline">
+            </div>
+            <div>
+              <div class="meta">LUCKY SPIN • Setiap Hari</div>
+              <h1>Lucky Whell untuk semua member</h1>
+              <p class="desc">
+                Promo luckyspin banyak diminati dan di buru para player saat ini.
+                kamu bisa dapatkan tiket spin nya 1x sehari dengan minimal deposit 10.000
+              </p>
+
+              <div class="row-actions">
+                <div class="pillbtn gold" onclick="window.open('https://come.ac/LC_tebas','_blank','noopener')">Live Chat</div>
+                <div class="pillbtn" onclick="window.open('https://tebaskita.com/','_blank','noopener')">Kunjungi Situs</div>
+                <div class="pillbtn" onclick="location.href='index.html'">Kembali</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- daftar artikel -->
+          <div class="list">
+            <div class="item">
+              <div class="pic"><img src="https://i.imgur.com/tZMODrO.png" alt=""></div>
+              <div>
+                <div class="meta">HOT NEWS • </div>
+                <h3>BONUS 50% — Bonus Slot Member Baru</h3>
+                <p>• Minimum Pembelian Rp 10.000.</p>
+                <p>• Maksimum Pembelian Rp 400.000.</p>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="pic"><img src="https://i.imgur.com/yhmM3RM.png" alt=""></div>
+              <div>
+                <div class="meta">HOT NEWS •</div>
+                <h3>BONUS CASHBACK — Bonus Cashback Sportsbook 15%</h3>
+                <p>• Semua game di provider SBOLV dengan kategori Sports.</p>
+                <p>• Semua game di provider AFBSport dengan kategori Sports.</p>
+                <p>• Semua game di provider Saba Sport dengan kategori Sports.</p>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="pic"><img src="https://i.imgur.com/WoV64t5.png" alt=""></div>
+              <div>
+                <div class="meta">HOT NEWS •</div>
+                <h3>BONUS ROLLINGAN — Bonus Rollingan Casino 0.8%</h3>
+                <p>• Semua game di provider SBOLV dengan kategori Live Casino.</p>
+                <p>• Semua game di provider Pragmatic Play dengan kategori Live Casino.</p>
+                <p>• Semua game di provider LG88 [DEPRECATED] dengan kategori Live Casino.</p>
+                <p>• Semua game di provider Sexy Casino dengan kategori Live Casino.</p>
+                <p>• Semua game di provider AFB dengan kategori Live Casino.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- KANAN: Sidebar (silver) -->
+      <aside class="card shimmer glow-silver">
+        <div class="pad">
+          <div class="sideTitle">Trending</div>
+          <div class="trend">
+            <a href="#" onclick="return false;">
+              <div class="num">1</div>
+              <div>
+                <div class="t">BONUS MEMBER BARU 50% </div>
+                <div class="s">Minimum Pembelian Rp 10.000 - Maksimum Pembelian Rp 400.000</div>
+              </div>
+            </a>
+            <a href="#" onclick="return false;">
+              <div class="num">2</div>
+              <div>
+                <div class="t">LUCKY SPIN</div>
+                <div class="s">Dapatkan tiket luckyspin nya dab putar roda keberuntungan mu.</div>
+              </div>
+            </a>
+            <a href="#" onclick="return false;">
+              <div class="num">3</div>
+              <div>
+                <div class="t">DEPOSIT QRIS</div>
+                <div class="s">Deposit dengan mudah tinggal scan 5 detik auto proses.</div>
+              </div>
+            </a>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="sideTitle">Info</div>
+          <p class="desc" style="margin:0">
+            New Update Pragmatic !! Saat Ini Sudah Bisa Melakukan Betting Slot Dari 400 Dan Buy Spin Dari 5000 !!</p>
+          <div style="display:grid; gap:10px; margin-top:12px">
+            <button class="btn gold" onclick="window.open('https://come.ac/LC_tebas','_blank','noopener')">Live Chat</button>
+            <button class="btn" onclick="window.open('https://tebaskita.com/','_blank','noopener')">Kunjungi Situs</button>
+            <button class="btn" onclick="location.href='index.html'">Kembali</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <div class="float">
+    <div class="fab" onclick="window.open('https://come.ac/LC_tebas','_blank','noopener')">
+      <span class="dot"></span> Live Chat
+    </div>
   </div>
+
 </body>
 </html>
